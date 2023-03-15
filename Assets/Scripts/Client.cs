@@ -11,6 +11,8 @@ public class Client : MonoBehaviour
     private int hostID;
     private int reliableChannel;
 
+    public string UserName;
+
 private int connectionID;
     private bool isConnected = false;
     private byte error;
@@ -53,6 +55,9 @@ private int connectionID;
 
             case NetworkEventType.ConnectEvent:
                     onMessageReceive?.Invoke($"You have been connected to server.");
+
+                    SendMessage(UserName);
+                    
                     Debug.Log($"You have been connected to server.");
                     break;
                 case NetworkEventType.DataEvent:
